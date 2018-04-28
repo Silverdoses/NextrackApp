@@ -6,12 +6,12 @@ A simple single view Framework7 starter app template.
 
 ### 1. Download this repository
 ```
-git clone https://github.com/framework7io/framework7-template-single-view my-app
+git clone https://github.com/Legacier/NextrackApp NextrackApp
 ```
 
 Repository will be downloaded into `my-app/` folder
 
-### 2. Instal dependencies
+### 2. Install dependencies
 
 Go to the downloaded repository folder and run:
 ```
@@ -35,7 +35,7 @@ Just put the contents of `www` folder in your cordova's project root `www` folde
 ## One command install
 
 ```
-git clone https://github.com/framework7io/framework7-template-single-view my-app &&
+git clone https://github.com/Legacier/NextrackApp NextrackApp &&
 cd my-app &&
 npm install &&
 npm run serve
@@ -43,4 +43,4 @@ npm run serve
 
 ## Live Preview
 
-https://framework7io.github.io/framework7-template-single-view/
+https://nextrack.com.co/App/
