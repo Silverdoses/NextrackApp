@@ -1,6 +1,6 @@
-# Framework7 Single View Starter App Template
+# Nextrack Tracking App
 
-A simple single view Framework7 starter app template.
+Tracking system for Nexing S.A.S.
 
 ## Usage
 
