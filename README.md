@@ -9,7 +9,7 @@ A simple single view Framework7 starter app template.
 git clone https://github.com/Legacier/NextrackApp NextrackApp
 ```
 
-Repository will be downloaded into `my-app/` folder
+Repository will be downloaded into `NextrackApp` folder
 
 ### 2. Install dependencies
 
