@@ -1,29 +1,46 @@
+document.addEventListener('deviceready', function () {
+  // 1) Request background execution
+  cordova.plugins.backgroundMode.enable();
+  // Ensure background execution.
+  cordova.plugins.backgroundMode.overrideBackButton();
+  cordova.plugins.backgroundMode.excludeFromTaskList();
+}, false);
+
 // Dom7
 var $$ = Dom7;
+var request = require('request');
+var j = request.jar();
+baseurl = 'http://13.58.18.21:8082';
 
 // Framework7 App main instance
 var app  = new Framework7({
   root: '#app', // App root element
-  id: 'io.framework7.testapp', // App bundle ID
-  name: 'Framework7', // App name
+  id: 'com.tracking.nextrack', // App bundle ID
+  name: 'NexTrack', // App name
   theme: 'auto', // Automatic theme detection
-  // App root data
-  data: function () {
-    return {
-      user: {
-        firstName: 'John',
-        lastName: 'Doe',
-      },
-    };
-  },
+
   // App root methods
   methods: {
-    helloWorld: function () {
-      app.dialog.alert('Hello World!');
+    login: function (username, passwd) {
+      request.post({url: baseurl + '/api/session',
+          form: {email: username, password: passwd}, jar:j},
+
+        function (error, response, body) {
+          if (error){
+            app.dialog.alert('Ocurrió un error con la solicitud. Por favor verifique su conexión' +
+              ' a internet y el estado del servidor Nextrack.');
+            return false;
+          }
+          else {
+            if (response.statusCode === 200)
+              app.loginScreen.close('#login-view');
+            else
+              app.dialog.alert('No se puede iniciar sesión. Verifique los datos ingresados.')
+          }
+          console.log(document.cookie);
+        });
     },
   },
-  // App routes
-  routes: routes,
 });
 
 // Init/Create main view
@@ -31,14 +48,12 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
+app.loginScreen.open('#login-view');
+
 // Login Screen Demo
-$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
+$$('#login-view .login-button').on('click', function () {
+  var username = $$('#login-view [name="username"]').val();
+  var password = $$('#login-view [name="password"]').val();
 
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
-
-  // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
+  app.methods.login(username, password);
 });
