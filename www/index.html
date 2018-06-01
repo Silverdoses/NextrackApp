@@ -20,9 +20,22 @@
   <meta name="msapplication-tap-highlight" content="no">
   <title>NexTrack App</title>
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+
+  <!-- Style css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/login-prettify.css">
+
   <link rel="stylesheet" href="framework7/css/framework7.min.css">
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/app.css">
+
+
 </head>
 <body>
   <div id="app">
@@ -44,20 +57,25 @@
       </div>
     </div>
     <!-- Right panel with reveal effect-->
-    <div class="panel panel-right panel-cover">
+    <div class="panel panel-right panel-reveal">
       <div class="view">
         <div class="page">
           <div class="navbar">
             <div class="navbar-inner">
-              <div class="title">Dispositivos</div>
+              <div class="title">Right Panel</div>
             </div>
           </div>
           <div class="page-content">
-            <div class="block">Right panel content goes here</div>
+            <div class="list virtual-list"></div>
           </div>
         </div>
       </div>
     </div>
+
+
+
+
+
 
     <!-- Your main view, should have "view-main" class -->
     <div class="view view-main ios-edges">
@@ -84,8 +102,7 @@
 
         <!-- Scrollable page content-->
         <div class="page-content">
-
-
+          <div id="map"></div>
         </div>
       </div>
     </div>
@@ -114,42 +131,44 @@
     <!-- Login Screen -->
     <div class="login-screen" id="login-view">
       <div class="view">
-        <div class="page">
-          <div class="page-content login-screen-content">
-            <div class="login-screen-title">NexTrack</div>
-            <div class="list">
-              <ul>
-                <li class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">Usuario</div>
-                    <div class="item-input-wrap">
-                      <input type="text" name="username" placeholder="E-mail">
-                    </div>
-                  </div>
-                </li>
-                <li class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">Contraseña</div>
-                    <div class="item-input-wrap">
-                      <input type="password" name="password" placeholder="******">
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="list">
-              <ul>
-                <li>
-                  <a href="#" class="item-link list-button login-button">Ingresar</a>
-                </li>
-              </ul>
-              <div class="block-footer">Nexing S.A.S.</div>
+        <div class="limiter">
+          <div class="container-login">
+            <div class="wrap-login p-t-190 p-b-30">
+              <form class="login-form validate-form">
+
+                <span class="login-form-title p-t-20 p-b-45">
+                  NexTrack App
+                </span>
+
+                <div class="wrap-input validate-input m-b-10" data-validate="Por favor ingrese usuario">
+                  <input class="input prettify" type="text" name="username" placeholder="Correo electrónico">
+                  <span class="focus-input"></span>
+                  <span class="symbol-input">
+                    <i class="fa fa-user"></i>
+                  </span>
+                </div>
+
+                <div class="wrap-input validate-input m-b-10" data-validate="Por favor ingrese contraseña">
+                  <input class="input prettify" type="password" name="password" placeholder="Contraseña">
+                  <span class="focus-input"></span>
+                  <span class="symbol-input">
+                    <i class="fa fa-lock"></i>
+                  </span>
+                </div>
+
+              </form>
+              <div class="container-login-form-btn p-t-10">
+                <button class="login-form-btn login-button">
+                  Iniciar sesión
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Cordova -->
   <script src="cordova.js"></script>
 
@@ -158,6 +177,18 @@
 
   <!-- Requests Browserified -->
   <script src="lib/request.js"></script>
+
+  <!-- Google Maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd-LjqOJ6q7fjSr3u65KjuvbIVI6ZnVpE" async defer></script>
+
+  <!-- GUI Handling Methods -->
+  <script src="js/uiHandler.js"></script>
+
+  <!-- Maps Handling Methods -->
+  <script src="js/mapsHandler.js"></script>
+
+  <!-- Maps Handling Methods -->
+  <script src="js/traccar.js"></script>
 
   <!-- App routes -->
   <!-- <script src="js/routes.js"></script> -->
