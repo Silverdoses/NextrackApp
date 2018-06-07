@@ -1,13 +1,5 @@
-function setPanelData() {
-  // Dummy items array
-  var items = [];
-  for (var i = 1; i <= 10; i++) {
-    items.push({
-      title: 'Item ' + i,
-      subtitle: 'Subtitle ' + i
-    });
-  }
-
+function setPanelData(items) {
+  console.log(items);
   var virtualList = app.virtualList.create({
     // List Element
     el: '.virtual-list',
@@ -20,12 +12,12 @@ function setPanelData() {
     '    <li class="swipeout">\n' +
     '      <div class="item-content swipeout-content">\n' +
     '        <div class="item-inner">\n' +
-    '          <div class="item-title">Swipe right on me please</div>\n' +
+    '          <div class="item-title">{{name}}</div>\n' +
     '        </div>\n' +
     '      </div>\n' +
     '      <div class="swipeout-actions-left">\n' +
-    '        <a href="#" class="color-green alert-reply">Reply</a>\n' +
-    '        <a href="#" class="color-blue alert-forward">Forward</a>\n' +
+    '        <a href="#" class="color-green alert-reply">Ruta</a>\n' +
+    '        <a href="#" class="color-blue alert-forward">Seguimiento</a>\n' +
     '      </div>\n' +
     '    </li>\n' +
     '  </ul>\n' +
@@ -46,6 +38,3 @@ function setPanelData() {
   return virtualList;
 
 }
-
-
-

@@ -4,27 +4,35 @@ var $$ = Dom7;
 var ss;
 
 document.addEventListener('deviceready', function () {
-  // 1) Request background execution
+  cordova.plugins.backgroundMode.setDefaults({
+    title: 'Servicio en ejecución',
+    text: 'Presiona para regresar a la aplicación.',
+    icon: 'icon', // this will look for icon.png in platforms/android/res/drawable|mipmap
+    color: undefined, // hex format like 'F14F4D'
+    resume: true,
+    silent: false,
+    hidden: true,
+    bigText: false
+  });
+
+  // Solicita la ejecución en segundo plano y sobreescribe la acción del botón retroceder del teléfono.
   cordova.plugins.backgroundMode.enable();
-  // Ensure background execution.
   cordova.plugins.backgroundMode.overrideBackButton();
-  cordova.plugins.backgroundMode.excludeFromTaskList();
+
 
   ss = new cordova.plugins.SecureStorage(
-    function () { console.log('Success')},
-    function (error) { console.log('Error ' + error); },
+    function () {},
+    function (error) {app.dialog.alert('Por favor configure un modo de bloqueo en su teléfono antes de continuar.')},
     'nextrack_data');
 
   ss.get(
     function (value) {
       var data = JSON.parse(value);
       login(data.user, data.pword);
-      setPanelData();
-      initMap();},
-    function (error) {
-      app.loginScreen.open('#login-view');
-      app.dialog.alert(error); },
-    'nextrack-data');
+      initMap();
+      },
+    function (error) {app.loginScreen.open('#login-view');},
+    'nextrack_data');
 
 }, false);
 
@@ -56,7 +64,5 @@ $$('#login-view .login-button').on('click', function () {
   var password = $$('#login-view [name="password"]').val();
 
   login(username, password);
-  setPanelData();
-
   initMap();
 });
