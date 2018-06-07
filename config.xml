@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.tracking.nextrack" version="0.1">
-    <name>Nextrack</name>
+    <name>NexTrack</name>
     <description>
         Aplicación de rastreo satelital. Propiedad de Nexing S.A.S.
     </description>
@@ -15,6 +15,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon src="www/img/logo.png" />
     <platform name="android">
         <custom-preference name="android-manifest/application/@android:hardwareAccelerated" value="true" />
         <custom-preference name="android-manifest/@android:hardwareAccelerated" value="true" />
